@@ -52,8 +52,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <?php if($a) : ?>
 <!--        <?php //foreach($a as $aluno) : ?> -->
             <tr>
-                <td><?php echo $a->ra; ?></td>
-                <td><?php echo $a->nome; ?></td>
+                <td><?= $a->ra; ?></td>
+                <td><?= $a->nome; ?></td>
             </tr>
 <!--        --><?php //endforeach; ?>
     <?php endif; ?>
@@ -74,11 +74,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     <?php if($alunos) : ?>
     <?php foreach($alunos as $aluno) : ?>
     <tr>
-        <td><?php echo $aluno->ra; ?></td>
-        <td><?php echo $aluno->nome; ?></td>
-        <td><?php echo $aluno->email; ?></td>
-        <td><?php echo $aluno->telefone; ?></td>
-        <td><?php echo $aluno->login; ?></td>
+        <td><?= $aluno->ra; ?></td>
+        <td><?= $aluno->nome; ?></td>
+        <td><?= $aluno->email; ?></td>
+        <td><?= $aluno->telefone; ?></td>
+        <td><?= $aluno->login; ?></td>
     </tr>
     <?php endforeach; ?>
     <?php endif; ?>
