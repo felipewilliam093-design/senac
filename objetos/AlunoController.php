@@ -20,4 +20,18 @@ Class ALunoController{
     public function pesquisaAluno($ra){
         return $this->aluno->PesquisaAluno($ra);
     }
+
+    public function cadastrarAluno($dados){
+
+        $this->aluno->nome = $dados["nome"];
+        $this->aluno->email = $dados["email"];
+        $this->aluno->telefone = $dados["telefone"];
+        $this->aluno->login = $dados["login"];
+        $this->aluno->senha = $dados["senha"];
+
+        if($this->aluno->Cadastrar()){
+            header("location: index.php");
+            exit();
+        }
+    }
 }
