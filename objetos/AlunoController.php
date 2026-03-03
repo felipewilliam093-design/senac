@@ -34,4 +34,12 @@ Class ALunoController{
             exit();
         }
     }
+
+    public function excluirAluno($ra){
+        $this->aluno->ra = $ra;
+
+        if($this->aluno->Excluir()){
+            header("location: index.php");
+        }
+    }
 }
