@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['alterar'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro de Aluno</title>
+    <title>Atualização de Alunos</title>
 </head>
 <body>
 

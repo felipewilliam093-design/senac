@@ -79,6 +79,7 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
         <td>Email</td>
         <td>Telefone</td>
         <td>Login</td>
+        <td>Imagem</td>
     </tr>
 
     <?php if($alunos) : ?>
@@ -89,6 +90,13 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
         <td><?= $aluno->email; ?></td>
         <td><?= $aluno->telefone; ?></td>
         <td><?= $aluno->login; ?></td>
+
+        <?php if($aluno->imagem == "") : ?>
+            <td><img style="width: 5%" src="imagens/image-fail.jpg"></td>
+        <?php else : ?>
+            <td><img style="width: 5%;" src="uploads/<?= $aluno->imagem; ?>"></td>
+        <?php endif; ?>
+
         <td><a href="atualizar.php?alterar=<?= $aluno->ra ?>">Alterar</a> </td>
         <td><a href="index.php?excluir=<?= $aluno->ra ?>">Excluir</a> </td>
     </tr>
