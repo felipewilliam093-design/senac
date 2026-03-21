@@ -2,6 +2,12 @@
 
 include_once "objetos/AlunoController.php";
 
+session_start();
+if(!isset($_SESSION['aluno'])){
+    header("location: login.php");
+    exit();
+}
+
 $controller = new AlunoController();
 $alunos = $controller->index();
 global $alunos;
@@ -40,6 +46,9 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
 </head>
 <body>
 
+<p><strong>Usuário logado: </strong><?= $_SESSION['aluno']->nome ?>
+ - <a href="logout.php">Sair</a> </p>
+
 <h1>Senac Rio Claro</h1>
 
 <!--Link da página Cadastro de Aluno-->
@@ -77,28 +86,25 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
         <td>RA</td>
         <td>Nome</td>
         <td>Email</td>
-        <td>Telefone</td>
-        <td>Login</td>
-        <td>Imagem</td>
     </tr>
 
     <?php if($alunos) : ?>
     <?php foreach($alunos as $aluno) : ?>
     <tr>
-        <td><?= $aluno->ra; ?></td>
+        <td><a href="ver-aluno.php?ra= <?= $aluno->ra; ?>"><?= $aluno->ra; ?></a></td>
         <td><?= $aluno->nome; ?></td>
-        <td><?= $aluno->email; ?></td>
-        <td><?= $aluno->telefone; ?></td>
-        <td><?= $aluno->login; ?></td>
+        <td><?= $aluno->email;?></td>
 
-        <?php if($aluno->imagem == "") : ?>
-            <td><img style="width: 5%" src="imagens/image-fail.jpg"></td>
-        <?php else : ?>
-            <td><img style="width: 5%;" src="uploads/<?= $aluno->imagem; ?>"></td>
-        <?php endif; ?>
+<!--        --><?php //if($aluno->imagem == "") : ?>
+<!--            <td><img style="width: 5%" src="imagens/image-fail.jpg"></td>-->
+<!--        --><?php //else : ?>
+<!--            <td><img style="width: 5%;" src="uploads/--><?php //= $aluno->imagem; ?><!--"></td>-->
+<!--        --><?php //endif; ?>
 
         <td><a href="atualizar.php?alterar=<?= $aluno->ra ?>">Alterar</a> </td>
         <td><a href="index.php?excluir=<?= $aluno->ra ?>">Excluir</a> </td>
+        <td><a href="ver-aluno.php?ra=<?= $aluno->ra ?>">Visualizar</a> </td>
+
     </tr>
     <?php endforeach; ?>
     <?php endif; ?>

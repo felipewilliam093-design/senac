@@ -91,4 +91,24 @@ Class Aluno{
         return $resultado->fetch(PDO::FETCH_OBJ);
     }
 
+    public function login(){
+        $sql = "SELECT * FROM ALUNOS WHERE login = :login";
+        $STMT = $this->bd->prepare($sql);
+        $STMT->bindParam(":login", $this->login, PDO::PARAM_STR);
+        $STMT->execute();
+        $resultado = $STMT->fetch(PDO::FETCH_OBJ);
+
+        if($resultado){
+            if(password_verify($this->senha, $resultado->senha)){
+                session_start();
+                $_SESSION["aluno"] = $resultado;
+                header("Location: index.php");
+                exit();
+            } else{
+                header("Location: login.php");
+                exit();
+            }
+        }
+    }
+
 }
