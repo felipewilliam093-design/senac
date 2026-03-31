@@ -16,17 +16,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title>Login - Senac Rio Claro</title>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="login-body">
 
-<form method="POST" action="login.php">
-    <label for="login">Login</label>
-    <input type="text" id="login" name="login">
-    <label for="senha">Senha</label>
-    <input type="password" id="senha" name="senha">
-    <button>Entrar</button>
-</form>
+<div class="login-wrapper">
+    <div class="card login-card">
+        <div class="login-header">
+            <h2>Senac Rio Claro</h2>
+            <p>Acesse sua conta</p>
+        </div>
+        
+        <form method="POST" action="login.php" class="login-form">
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login" placeholder="Digite seu usuário" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block mt-3">Entrar</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
